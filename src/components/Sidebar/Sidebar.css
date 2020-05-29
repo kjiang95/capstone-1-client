@@ -1,0 +1,32 @@
+.sidebar {
+  height: 100vh;
+  position: fixed;
+  width: 300px;
+  background-color: #636363;
+  overflow-x: hidden; 
+  overflow-x: auto;
+  text-align: center;
+}
+
+.giftee-element {
+  color: white;
+  cursor: pointer;
+}
+
+.show {
+  background-color: #E25049;
+}
+
+.hidden {
+  display: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-header {
+  color: lightgray;
+}
