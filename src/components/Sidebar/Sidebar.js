@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { MyContext } from '../../contexts/context';
 import GifteeApiService from '../../services/giftee-api-service';
 import SidebarGiftee from './Sidebar-Giftee';
-import { Link } from 'react-router-dom';
+import TokenService from '../../services/token-service';
 import "./Sidebar.css";
 
 export default class Sidebar extends Component {
@@ -40,7 +40,7 @@ export default class Sidebar extends Component {
   }
 
   renderLogin() {
-    if (!this.context.userId) {
+    if (!TokenService.hasAuthToken()) {
       return (
         <div>
           <button onClick={() => {this.props.history.push('/register')}}>Register</button>
@@ -55,7 +55,6 @@ export default class Sidebar extends Component {
           </ul>
           <button onClick={() => {this.props.history.push('/giftees')}}>Add new giftee</button>
           <button onClick={() => {
-            this.context.logOutUserId();
             this.props.history.push('/giftees')
           }}>
             Logout

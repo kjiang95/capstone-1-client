@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { MyContext } from '../contexts/context';
+import TokenService from '../services/token-service';
 
 export default class LoginPage extends Component {
   static contextType = MyContext;
@@ -23,8 +24,9 @@ export default class LoginPage extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-
-    this.context.setUserId()
+    const username = this.state.username
+    const password = this.state.password
+    TokenService.makeBasicAuthToken(username, password)
     this.props.history.push('/')
   }
   render() {

@@ -1,8 +1,13 @@
 import config from '../config';
+import TokenService from './token-service';
 
 const GifteeApiService = {
   getGifteesByUserId(user_id) {
-    return fetch(`${config.API_ENDPOINT}/users/${user_id}/giftees`)
+    return fetch(`${config.API_ENDPOINT}/users/giftees`, {
+      headers: {
+        'authorization': `basic ${TokenService.getAuthToken()}`
+      }
+    })
       .then(res =>
         (!res.ok)
         ? res.json().then(e => Promise.reject(e))
@@ -12,7 +17,10 @@ const GifteeApiService = {
 
   deleteGifteeById(id) {
     return fetch(`${config.API_ENDPOINT}/giftees/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'authorization': `basic ${TokenService.getAuthToken()}`
+      }
     })
       .then(res =>{
         if (!res.ok) {
@@ -25,7 +33,8 @@ const GifteeApiService = {
     return fetch(`${config.API_ENDPOINT}/giftees`, {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'authorization': `basic ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(giftee)
     })

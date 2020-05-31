@@ -5,7 +5,7 @@ import EventsApiService from '../services/event-api-service';
 
 
 export const MyContext = React.createContext({
-  userId: 1,
+  userId: null,
   gifteeId: null,
   eventId: null,
   posted: 0,
@@ -29,7 +29,7 @@ export const MyContext = React.createContext({
 
 export default class MyProvider extends Component {
   state = {
-    userId: 1,
+    userId: null,
     gifteeId: null,
     eventId: null,
     posted: 0,
@@ -46,8 +46,6 @@ export default class MyProvider extends Component {
     setPostedToOne: () => {},
     setEventId: () => {},
     handleGiftDelete: () => {},
-    setUserId: () => {},
-    logOutUserId: () => {}
   };
 
   setEventId = (eventId) => {
@@ -123,18 +121,6 @@ export default class MyProvider extends Component {
       })
   }
 
-  setUserId = () => {
-    this.setState({
-      userId: 1
-    })
-  }
-
-  logOutUserId = () => {
-    this.setState({
-      userId: null
-    })
-  }
-
   render() {
     return (
       <MyContext.Provider value={{
@@ -154,9 +140,7 @@ export default class MyProvider extends Component {
         setPostedToZero: this.setPostedToZero,
         setPostedToOne: this.setPostedToOne,
         setEventId: this.setEventId,
-        handleGiftDelete: this.handleGiftDelete,
-        setUserId: this.setUserId,
-        logOutUserId: this.logOutUserId
+        handleGiftDelete: this.handleGiftDelete
       }}>
         {this.props.children}
       </MyContext.Provider>

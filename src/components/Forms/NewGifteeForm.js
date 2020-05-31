@@ -27,7 +27,6 @@ export default class NewGifteeForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     const newGiftee = {
-      user_id: this.context.userId,
       full_name: this.state.fullName,
       relationship: this.state.relationship
     }
@@ -63,7 +62,7 @@ export default class NewGifteeForm extends Component {
           </select>
         </label>
 
-        <input type='submit' value="Create Account" />
+        <input type='submit' value="Add Giftee" />
       </form>
     )
   }

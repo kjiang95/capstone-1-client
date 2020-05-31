@@ -1,8 +1,13 @@
 import config from '../config';
+import TokenService from './token-service';
 
 const EventsApiService = {
   getEventByGifteeId(giftee_id) {
-    return fetch(`${config.API_ENDPOINT}/giftees/${giftee_id}/events`)
+    return fetch(`${config.API_ENDPOINT}/giftees/${giftee_id}/events`, {
+      headers: {
+        'authorization': `basic ${TokenService.getAuthToken()}`
+      }
+    })
       .then(res =>
         (!res.ok)
         ? res.json().then(e => Promise.reject(e))
@@ -12,7 +17,10 @@ const EventsApiService = {
 
   deleteEventById(id) {
     return fetch(`${config.API_ENDPOINT}/events/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'authorization': `basic ${TokenService.getAuthToken()}`
+      }
     })
       .then(res => {
         if (!res.ok) {
@@ -26,7 +34,8 @@ const EventsApiService = {
     return fetch(`${config.API_ENDPOINT}/events`, {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'authorization': `basic ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(event)
     })

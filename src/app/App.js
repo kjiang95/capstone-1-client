@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter, Route} from 'react-router-dom';
+import Sidebar from '../components/Sidebar/Sidebar';
+import PrivateRoute from '../Utils/PrivateRoute';
+import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
 import LandingPage from '../routes/LandingPage';
 import RegistrationPage from '../routes/RegistrationPage';
 import NewGifteePage from '../routes/NewGifteePage';
 import NewEventPage from '../routes/NewEventPage';
 import GiftsPage from '../routes/GiftsPage';
 import MyProvider from '../contexts/context';
-import Sidebar from '../components/Sidebar/Sidebar';
 import LoginPage from '../routes/LoginPage';
 
 class App extends Component {
@@ -28,25 +30,25 @@ class App extends Component {
                   path={'/'}
                   component={LandingPage}
                 />
-                <Route
+                <PublicOnlyRoute
                   path={'/register'}
                   component={RegistrationPage}
                 />
-                <Route
+                <PublicOnlyRoute
                   path={'/login'}
                   component={LoginPage}
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path={'/giftees'}
                   component={NewGifteePage}
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path={'/events'}
                   component={NewEventPage}
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path={'/events/:eventId/gifts'}
                   component={GiftsPage}
