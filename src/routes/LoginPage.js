@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
 import { MyContext } from '../contexts/context';
 import TokenService from '../services/token-service';
+import UserApiService from '../services/user-api-service';
 
 export default class LoginPage extends Component {
   static contextType = MyContext;
+
+  static defaultProps = {
+    onLoginSuccess: () => {}
+  }
+
   constructor(props) {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      error: null
     }
   }
 
@@ -24,10 +31,25 @@ export default class LoginPage extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    this.setState({ error: null })
     const username = this.state.username
     const password = this.state.password
-    TokenService.makeBasicAuthToken(username, password)
-    this.props.history.push('/')
+    
+    UserApiService.postLogin({
+      user_name: username,
+      password: password
+    })
+      .then(res => {
+        this.setState({
+          username: '',
+          password: ''
+        })
+        TokenService.saveAuthToken(res.authToken)
+        this.props.history.push('/')
+      })
+      .catch(res => {
+        this.setState({ error: res.error })
+      })
   }
   render() {
     return (

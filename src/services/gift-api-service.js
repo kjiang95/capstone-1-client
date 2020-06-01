@@ -5,7 +5,7 @@ const GiftApiService = {
   getGiftsByEventId(event_id) {
     return fetch(`${config.API_ENDPOINT}/events/${event_id}/gifts`, {
       headers: {
-        'authorization': `basic ${TokenService.getAuthToken()}`
+        'authorization': `bearer ${TokenService.getAuthToken()}`
       }
     })
       .then(res =>
@@ -19,7 +19,7 @@ const GiftApiService = {
     return fetch(`${config.API_ENDPOINT}/gifts/${id}`, {
       method: 'DELETE',
       headers: {
-        'authorization': `basic ${TokenService.getAuthToken()}`
+        'authorization': `bearer ${TokenService.getAuthToken()}`
       }
     })
       .then(res =>{
@@ -34,7 +34,7 @@ const GiftApiService = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'authorization': `basic ${TokenService.getAuthToken()}`
+        'authorization': `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(newGift)
     })

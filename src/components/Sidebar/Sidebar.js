@@ -55,7 +55,8 @@ export default class Sidebar extends Component {
           </ul>
           <button onClick={() => {this.props.history.push('/giftees')}}>Add new giftee</button>
           <button onClick={() => {
-            this.props.history.push('/giftees')
+            this.props.history.push('/giftees');
+            TokenService.clearAuthToken()
           }}>
             Logout
           </button>

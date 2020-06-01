@@ -5,7 +5,7 @@ const GifteeApiService = {
   getGifteesByUserId(user_id) {
     return fetch(`${config.API_ENDPOINT}/users/giftees`, {
       headers: {
-        'authorization': `basic ${TokenService.getAuthToken()}`
+        'authorization': `bearer ${TokenService.getAuthToken()}`
       }
     })
       .then(res =>
@@ -19,7 +19,7 @@ const GifteeApiService = {
     return fetch(`${config.API_ENDPOINT}/giftees/${id}`, {
       method: 'DELETE',
       headers: {
-        'authorization': `basic ${TokenService.getAuthToken()}`
+        'authorization': `bearer ${TokenService.getAuthToken()}`
       }
     })
       .then(res =>{
@@ -34,7 +34,7 @@ const GifteeApiService = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'authorization': `basic ${TokenService.getAuthToken()}`
+        'authorization': `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(giftee)
     })
