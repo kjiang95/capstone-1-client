@@ -19,12 +19,21 @@ live: https://gift-app.now.sh/
 /events
   * / 
     * post -> post new events, requires the event type, event date, and optionally, budget
-    *
+    * delete -> delete events
+  * /:event_id/gifts
+    * get -> get all gifts
 /gifts
+  * /
+    * post -> post new gifts
+    * delete -> delete gifts
 
 
 ## Summary
 This app allows you to create Giftees for which you assign giftable dates and and gifts for those dates
 
-##
+## Tech used
+Javascript
 React
+Node
+Express
+PostgreSQL
