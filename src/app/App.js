@@ -19,11 +19,11 @@ class App extends Component {
         <BrowserRouter>
           <div className="App">
             <header className="App-header"></header>
-            <main className="App-main">
-              <Route
+            <Route
                 path='/'
                 component={Sidebar}
               />
+            <main className="App-main">
               <div className="page">
                 <Route
                   exact

@@ -1,11 +1,11 @@
 .sidebar {
   height: 100vh;
-  position: fixed;
-  width: 300px;
+  width: 200px;
   background-color: #636363;
+  position: fixed;
   overflow-x: hidden; 
   overflow-x: auto;
-  text-align: center;
+  text-align: center; 
 }
 
 .giftee-element {
@@ -30,3 +30,14 @@ ul {
 .sidebar-header {
   color: lightgray;
 }
+
+.giftee-name {
+  display: inline;
+  margin: 10px;
+}
+
+/* @media only screen and (min-width: 800px) {
+  .sidebar {
+    
+  }
+} */

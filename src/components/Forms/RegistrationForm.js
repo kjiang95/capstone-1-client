@@ -6,7 +6,8 @@ export default class RegistrationForm extends Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      error: null
     }
   }
 
@@ -29,11 +30,11 @@ export default class RegistrationForm extends Component {
     }
 
     UserApiService.postUser(newUser)
-      .then(newUser => {
-        console.log(newUser)
-      })
       .then(() => {
         this.props.history.push('/')
+      })
+      .catch(res => {
+        this.setState({ error: res.error })
       })
   }
 

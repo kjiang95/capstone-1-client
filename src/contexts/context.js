@@ -8,7 +8,7 @@ export const MyContext = React.createContext({
   userId: null,
   gifteeId: null,
   eventId: null,
-  posted: 0,
+  expandedGiftee: null,
 
   giftees: [],
   events: [],
@@ -19,12 +19,9 @@ export const MyContext = React.createContext({
   setGifteeId: () => {},
   handleGiftFormSubmit: () => {},
   handleNewEventSubmit: () => {},
-  setPostedToZero: () => {},
-  setPostedToOne: () => {},
   setEventId: () => {},
   handleGiftDelete: () => {},
-  setUserId: () => {},
-  logOutUserId: () => {}
+  toggleExpandedGiftee: () => {}
 });
 
 export default class MyProvider extends Component {
@@ -32,7 +29,7 @@ export default class MyProvider extends Component {
     userId: null,
     gifteeId: null,
     eventId: null,
-    posted: 0,
+    expandedGiftee: null,
 
     gifts: [],
     giftees: [],
@@ -42,10 +39,9 @@ export default class MyProvider extends Component {
     setGifteeId: () => {},
     handleGiftFormSubmit: () => {},
     handleNewEventSubmit: () => {},
-    setPostedToZero: () => {},
-    setPostedToOne: () => {},
     setEventId: () => {},
     handleGiftDelete: () => {},
+    toggleExpandedGiftee: () => {}
   };
 
   setEventId = (eventId) => {
@@ -65,7 +61,7 @@ export default class MyProvider extends Component {
   };
 
   getGiftees = () => {
-    GifteeApiService.getGifteesByUserId(this.state.userId)
+    GifteeApiService.getGifteesByUserId()
       .then(giftees => {
         this.setState({
           giftees: giftees
@@ -75,7 +71,7 @@ export default class MyProvider extends Component {
 
   setGifteeId = (id) => {
     this.setState({
-      gifteeId: id
+      expandedGiftee: id
     })
   }
 
@@ -97,18 +93,6 @@ export default class MyProvider extends Component {
     return EventsApiService.postEvent(newEvent)
   }
 
-  setPostedToOne= () => {
-    this.setState({
-      posted: 1
-    })
-  }
-
-  setPostedToZero = () => {
-    this.setState({
-      posted: 0
-    })
-  }
-
   handleGiftDelete = (giftId) => {
     GiftApiService.deleteGiftById(giftId)
       .then(() => {
@@ -121,13 +105,19 @@ export default class MyProvider extends Component {
       })
   }
 
+  toggleExpandedGiftee = (eventId) => {
+    (this.state.expandedGiftee === eventId)
+      ? this.setState({ expandedGiftee: null })
+      : this.setState({ expandedGiftee: eventId })
+  }
+
   render() {
     return (
       <MyContext.Provider value={{
         userId: this.state.userId,
         gifteeId: this.state.gifteeId,
         eventId: this.state.eventId,
-        posted: this.posted,
+        expandedGiftee: this.state.expandedGiftee,
 
         gifts: this.state.gifts,
         giftees: this.state.giftees,
@@ -137,10 +127,9 @@ export default class MyProvider extends Component {
         setGifteeId: this.setGifteeId,
         handleGiftFormSubmit: this.handleGiftFormSubmit,
         handleNewEventSubmit: this.handleNewEventSubmit,
-        setPostedToZero: this.setPostedToZero,
-        setPostedToOne: this.setPostedToOne,
         setEventId: this.setEventId,
-        handleGiftDelete: this.handleGiftDelete
+        handleGiftDelete: this.handleGiftDelete,
+        toggleExpandedGiftee: this.toggleExpandedGiftee
       }}>
         {this.props.children}
       </MyContext.Provider>

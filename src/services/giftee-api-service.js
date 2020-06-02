@@ -2,7 +2,7 @@ import config from '../config';
 import TokenService from './token-service';
 
 const GifteeApiService = {
-  getGifteesByUserId(user_id) {
+  getGifteesByUserId() {
     return fetch(`${config.API_ENDPOINT}/users/giftees`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`

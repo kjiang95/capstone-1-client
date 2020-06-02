@@ -35,14 +35,12 @@ export default class NewEventForm extends Component {
         this.context.setEventId(returnedEvent.id)
         this.props.history.push(`events/${returnedEvent.id}/gifts`)
       })
-      .then(() => {
-        this.context.setPostedToOne()
-      })
+      .catch(err => {console.log(err)})
   }
 
   render () {
     const newEvent = {
-      giftee_id: this.context.gifteeId,
+      giftee_id: this.context.expandedGiftee,
       event_type: this.state.eventType,
       event_date: this.state.date,
       budget: this.state.budget,

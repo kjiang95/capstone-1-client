@@ -12,7 +12,6 @@ export default class SidebarGiftee extends Component {
     super(props);
     this.state = {
       events: [],
-      display: 'hidden',
     };
   };
 
@@ -46,10 +45,15 @@ export default class SidebarGiftee extends Component {
     }
   }
 
-  toggleDisplay = () => {
-    (this.state.display === 'hidden')
-      ? this.setState({display: 'show'})
-      : this.setState({display: 'hidden'})
+  hideEvents(eventId) {
+    console.log(eventId)
+    console.log(this.context.expandedGiftee);
+    return (
+      (this.context.expandedGiftee === eventId)
+        ? 'show'
+        : 'hidden'
+    )
+
   }
 
   renderSidebarEvents() {
@@ -79,14 +83,13 @@ export default class SidebarGiftee extends Component {
     return (
       <li className='giftee-element'>
         <div>
-          <h3 onClick={this.toggleDisplay}>{giftee.full_name}</h3>
-          <button onClick={e => handleDeleteButtonClicked(e, giftee.id)}>Delete Giftee</button>
+          <h3 className='giftee-name' onClick={() => this.context.toggleExpandedGiftee(giftee.id)}>{giftee.full_name}</h3>
+          <button className='giftee-name' onClick={e => handleDeleteButtonClicked(e, giftee.id)}>Delete Giftee</button>
         </div>
-        <ul className='sidebar-events' className={this.state.display}>
+        <ul className='sidebar-events' className={this.hideEvents(giftee.id)}>
           {this.renderSidebarEvents()}        
           <li>
             <button className='add-event-button' onClick={() => {
-              this.context.setGifteeId(giftee.id);
               this.props.history.push('/events')
             }}>
               Add New Event

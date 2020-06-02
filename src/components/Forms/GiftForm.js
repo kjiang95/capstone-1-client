@@ -8,8 +8,8 @@ export default class GiftForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      idea: null,
-      notes: null
+      idea: '',
+      notes: ''
     }
   }
 
@@ -23,7 +23,13 @@ export default class GiftForm extends Component {
     this.setState({notes: e.target.value})
   }
 
-
+  handleSubmit = (e, newGift) => {
+    this.setState({
+      idea: '',
+      notes: ''
+    })
+    this.context.handleGiftFormSubmit(e, newGift);
+  }
 
   render () {
     const newGift = {
@@ -33,15 +39,15 @@ export default class GiftForm extends Component {
     }
 
     return(
-      <form onSubmit={e => {this.context.handleGiftFormSubmit(e, newGift)}}>
+      <form onSubmit={e => {this.handleSubmit(e, newGift)}}>
         <label htmlFor='GiftIdea'>
           Idea:
-          <input onChange={this.handleIdeaChange} type='text' name='GiftIdea'/>
+          <input value={this.state.idea} onChange={this.handleIdeaChange} type='text' name='GiftIdea'/>
         </label>
 
         <label htmlFor='GiftNotes'>
           Notes:
-          <textarea value={this.state.value} onChange={this.handleNotesChange} name='GiftNotes'/>
+          <textarea value={this.state.notes} onChange={this.handleNotesChange} name='GiftNotes'/>
         </label>
 
         <input type='submit' value="Submit" />

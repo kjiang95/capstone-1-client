@@ -6,10 +6,6 @@ import UserApiService from '../services/user-api-service';
 export default class LoginPage extends Component {
   static contextType = MyContext;
 
-  static defaultProps = {
-    onLoginSuccess: () => {}
-  }
-
   constructor(props) {
     super(props);
     this.state = {
@@ -45,7 +41,10 @@ export default class LoginPage extends Component {
           password: ''
         })
         TokenService.saveAuthToken(res.authToken)
-        this.props.history.push('/')
+      })
+      .then(() => {
+        this.context.getGiftees();
+        this.props.history.push('/');
       })
       .catch(res => {
         this.setState({ error: res.error })

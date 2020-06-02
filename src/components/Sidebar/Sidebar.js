@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { MyContext } from '../../contexts/context';
 import GifteeApiService from '../../services/giftee-api-service';
 import SidebarGiftee from './Sidebar-Giftee';
+import SidebarIcon from './SidebarIcon';
 import TokenService from '../../services/token-service';
 import "./Sidebar.css";
 
@@ -12,6 +13,7 @@ export default class Sidebar extends Component {
     super(props);
     this.state = {
       giftees: [],
+      isOpen: true
     }
   }
 
@@ -55,7 +57,7 @@ export default class Sidebar extends Component {
           </ul>
           <button onClick={() => {this.props.history.push('/giftees')}}>Add new giftee</button>
           <button onClick={() => {
-            this.props.history.push('/giftees');
+            this.props.history.push('/');
             TokenService.clearAuthToken()
           }}>
             Logout
@@ -65,11 +67,34 @@ export default class Sidebar extends Component {
     }      
   }
 
-  render() {
+  renderSidebar() {
+    if (!this.state.isOpen) {
+      return null
+    }
     return (
       <div className='sidebar'>
         <h3 className='sidebar-header' onClick={() => {this.props.history.push('/')}}>Gift App</h3>
+        <div className="sidebar-icon">
+          {/* <SidebarIcon
+            isOpen={this.state.isOpen}
+            handleClick={this.toggleSidebar}
+          /> */}
+        </div>
         {this.renderLogin()}
+      </div>
+    )
+  }
+
+  toggleSidebar = () => {
+    this.setState(prevState => ({
+      isOpen: !prevState.isOpen
+    }))
+  }
+
+  render() {
+    return (
+      <div className='sidebar-container'>
+        {this.renderSidebar()}
       </div>
     )
   }
