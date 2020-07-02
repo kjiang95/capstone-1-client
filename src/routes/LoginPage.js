@@ -62,7 +62,7 @@ export default class LoginPage extends Component {
 
         <label htmlFor='Password'>
           Password:
-          <input onChange={(e) => this.handlePasswordChange(e)} type='text' name='Password'/>
+          <input onChange={(e) => this.handlePasswordChange(e)} type='password' name='Password'/>
         </label>
 
         <input type='submit' value="Login"/>

@@ -19,6 +19,9 @@ export default class LandingPage extends Component {
             <li>Add ideas for potential gifts</li>
             <li>You can navigate through and view the different giftees and events you've set up to track using the sidebar</li>
           </ol>
+          <h2>If you'd like to explore the app without making and account, login using:</h2>
+          <h3>Username: userone</h3>
+          <h3>Password: @Password1</h3>
         </section>
       </div>
 

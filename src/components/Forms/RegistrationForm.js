@@ -48,7 +48,7 @@ export default class RegistrationForm extends Component {
 
         <label htmlFor='RegisterPassword'>
           Password:
-          <input onChange={(e) => this.handlePasswordChange(e)} type='text' name='RegisterPassword'/>
+          <input onChange={(e) => this.handlePasswordChange(e)} type='password' name='RegisterPassword'/>
         </label>
 
         <input type='submit' value="Create Account" />
