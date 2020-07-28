@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { MyContext } from '../../contexts/context';
 
-export default class Sidebar extends Component {
+export default class GiftCard extends Component {
   static contextType = MyContext;
 
   render() {

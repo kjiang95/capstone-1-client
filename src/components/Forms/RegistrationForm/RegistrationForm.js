@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserApiService from '../../services/user-api-service';
+import UserApiService from '../../../services/user-api-service';
 
 export default class RegistrationForm extends Component {
   constructor(props) {

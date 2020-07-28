@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import NewEventForm from '../components/Forms/NewEventForm';
+import NewEventForm from '../../components/Forms/NewEventForm/NewEventForm';
 
 export default class NewEventPage extends Component {
   render() {

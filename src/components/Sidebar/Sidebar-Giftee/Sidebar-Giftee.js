@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import { MyContext } from '../../contexts/context';
-import EventApiService from '../../services/event-api-service';
+import { MyContext } from '../../../contexts/context';
+import EventApiService from '../../../services/event-api-service';
 import { Link } from 'react-router-dom';
-import SidebarEvent from './Sidebar-Event';
-import EventsApiService from '../../services/event-api-service';
+import SidebarEvent from '../Sidebar-Event/Sidebar-Event';
+import EventsApiService from '../../../services/event-api-service';
 
 export default class SidebarGiftee extends Component {
   static contextType = MyContext;
@@ -46,8 +46,6 @@ export default class SidebarGiftee extends Component {
   }
 
   hideEvents(eventId) {
-    console.log(eventId)
-    console.log(this.context.expandedGiftee);
     return (
       (this.context.expandedGiftee === eventId)
         ? 'show'

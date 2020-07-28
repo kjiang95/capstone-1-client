@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { MyContext } from '../../contexts/context';
-import GifteeApiService from '../../services/giftee-api-service'
+import { MyContext } from '../../../contexts/context';
+import GifteeApiService from '../../../services/giftee-api-service'
 
 export default class NewGifteeForm extends Component {
 
@@ -30,8 +30,6 @@ export default class NewGifteeForm extends Component {
       full_name: this.state.fullName,
       relationship: this.state.relationship
     }
-
-    console.log(newGiftee);
 
     GifteeApiService.postGiftee(newGiftee)
       .then(returnedGiftee => {

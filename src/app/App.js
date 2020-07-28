@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter, Route} from 'react-router-dom';
-import Sidebar from '../components/Sidebar/Sidebar';
+import Sidebar from '../components/Sidebar/Sidebar/Sidebar';
 import PrivateRoute from '../components/utils/PrivateRoute';
 import PublicOnlyRoute from '../components/utils/PublicOnlyRoute';
-import LandingPage from '../routes/LandingPage';
-import RegistrationPage from '../routes/RegistrationPage';
-import NewGifteePage from '../routes/NewGifteePage';
-import NewEventPage from '../routes/NewEventPage';
-import GiftsPage from '../routes/GiftsPage';
+import LandingPage from '../routes/LandingPage/LandingPage';
+import RegistrationPage from '../routes/RegistrationPage/RegistrationPage';
+import NewGifteePage from '../routes/NewGifteePage/NewGifteePage';
+import NewEventPage from '../routes/NewEventPage/NewEventPage';
+import GiftsPage from '../routes/GiftsPage/GiftsPage';
 import MyProvider from '../contexts/context';
-import LoginPage from '../routes/LoginPage';
+import LoginPage from '../routes/LoginPage/LoginPage';
 
 class App extends Component {
   render() {

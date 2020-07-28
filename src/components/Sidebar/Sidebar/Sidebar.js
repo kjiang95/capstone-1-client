@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import { MyContext } from '../../contexts/context';
-import GifteeApiService from '../../services/giftee-api-service';
-import SidebarGiftee from './Sidebar-Giftee';
-import SidebarIcon from './SidebarIcon';
-import TokenService from '../../services/token-service';
-import "./Sidebar.css";
+import { MyContext } from '../../../contexts/context';
+import GifteeApiService from '../../../services/giftee-api-service';
+import SidebarGiftee from '../Sidebar-Giftee/Sidebar-Giftee';
+import SidebarIcon from '../SidebarIcon/SidebarIcon';
+import TokenService from '../../../services/token-service';
+import "../Sidebar.css";
 
 export default class Sidebar extends Component {
   static contextType = MyContext;

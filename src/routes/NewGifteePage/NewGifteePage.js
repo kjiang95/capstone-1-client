@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import NewGifteeForm from '../components/Forms/NewGifteeForm';
+import NewGifteeForm from '../../components/Forms/NewGifteeForm/NewGifteeForm';
 
 
 export default class NewGifteePage extends Component {

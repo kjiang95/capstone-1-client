@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './forms.css';
-import EventApiService from '../../services/event-api-service';
+import '../forms.css';
+import EventApiService from '../../../services/event-api-service';
 import Calendar from 'react-calendar';
-import { MyContext } from '../../contexts/context';
+import { MyContext } from '../../../contexts/context';
 import 'react-calendar/dist/Calendar.css';
 
 export default class NewEventForm extends Component {

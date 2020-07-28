@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { MyContext } from '../contexts/context';
-import TokenService from '../services/token-service';
-import UserApiService from '../services/user-api-service';
+import { MyContext } from '../../contexts/context';
+import TokenService from '../../services/token-service';
+import UserApiService from '../../services/user-api-service';
 
 export default class LoginPage extends Component {
   static contextType = MyContext;
