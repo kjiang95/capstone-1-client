@@ -4,7 +4,7 @@ import RegistrationForm from '../../components/Forms/RegistrationForm/Registrati
 export default class RegistrationPage extends Component {
   render() {
     return (
-      <section>
+      <section className='registrationPage'>
         <h2>Register</h2>
         <RegistrationForm
           {...this.props}

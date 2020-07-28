@@ -52,7 +52,7 @@ export default class LoginPage extends Component {
   }
   render() {
     return (
-      <section>
+      <section className='loginPage'>
         <h2>Login</h2>
         <form onSubmit={(e) => this.handleSubmit(e)}>
         <label htmlFor='Username'>

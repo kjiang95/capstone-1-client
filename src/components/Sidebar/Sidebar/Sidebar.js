@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import { MyContext } from '../../../contexts/context';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import GifteeApiService from '../../../services/giftee-api-service';
 import SidebarGiftee from '../Sidebar-Giftee/Sidebar-Giftee';
-import SidebarIcon from '../SidebarIcon/SidebarIcon';
 import TokenService from '../../../services/token-service';
 import "../Sidebar.css";
 
@@ -52,25 +54,22 @@ export default class Sidebar extends Component {
     } else {
       return (
         <div>
-          <ul>
-            {this.renderSidebarGiftees()}
-          </ul>
-          <button onClick={() => {this.props.history.push('/giftees')}}>Add new giftee</button>
-          <button onClick={() => {
+          <button className='logout-button' onClick={() => {
             this.props.history.push('/');
             TokenService.clearAuthToken()
           }}>
             Logout
           </button>
+          <button onClick={() => {this.props.history.push('/giftees')}}>Add new giftee</button>
+          <ul>
+            {this.renderSidebarGiftees()}
+          </ul>
         </div>
       )
     }      
   }
 
   renderSidebar() {
-    if (!this.state.isOpen) {
-      return null
-    }
     return (
       <div className='sidebar'>
         <h3 className='sidebar-header' onClick={() => {this.props.history.push('/')}}>Gift App</h3>

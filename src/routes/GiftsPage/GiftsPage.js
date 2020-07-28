@@ -19,7 +19,7 @@ export default class GiftsPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className='giftsPage'>
         <h1>This is the GiftsPage!</h1>
         <h2>You can view all your gifts here</h2>
           {this.renderGiftCards()}

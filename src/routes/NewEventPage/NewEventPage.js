@@ -4,7 +4,7 @@ import NewEventForm from '../../components/Forms/NewEventForm/NewEventForm';
 export default class NewEventPage extends Component {
   render() {
     return (
-      <div>
+      <div className='eventPage'>
         <h1>Add New Events Here</h1>
         <NewEventForm
           {...this.props}
