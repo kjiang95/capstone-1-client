@@ -2,9 +2,11 @@ label {
   display: block;
 }
 
+
+
 .react-calendar {
-  font-size: 10px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  padding-bottom: 20px;
 }

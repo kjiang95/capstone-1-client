@@ -39,6 +39,7 @@ export default class NewEventForm extends Component {
   }
 
   render () {
+    //Current state is sent in req body on submit event
     const newEvent = {
       giftee_id: this.context.expandedGiftee,
       event_type: this.state.eventType,
@@ -47,6 +48,7 @@ export default class NewEventForm extends Component {
     }
 
     return(
+      //calendar is a reusable react component
       <form className='new-event-form' onSubmit={(e) => {this.reRouteToNewEvent(e, newEvent)}}>
         <label htmlFor='CreateEventType'>
           Event Type:

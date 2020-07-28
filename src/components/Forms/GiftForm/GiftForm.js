@@ -32,6 +32,7 @@ export default class GiftForm extends Component {
   }
 
   render () {
+    //Current state is sent in req body on submit event
     const newGift = {
       event_id: this.context.eventId,
       idea: this.state.idea,
