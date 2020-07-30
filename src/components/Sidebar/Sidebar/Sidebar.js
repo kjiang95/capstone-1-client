@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import { MyContext } from '../../../contexts/context';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import GifteeApiService from '../../../services/giftee-api-service';
 import SidebarGiftee from '../Sidebar-Giftee/Sidebar-Giftee';
 import TokenService from '../../../services/token-service';

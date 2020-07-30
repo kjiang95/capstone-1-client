@@ -1,12 +1,12 @@
 .sidebar {
   height: 100%;
-  width: 40vw;
+  width: 105px;
   background-color: #636363;
   position: fixed;
   overflow-x: hidden; 
   overflow-x: auto;
   text-align: center;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .giftee-element {
@@ -35,14 +35,13 @@ ul {
 
 .giftee-name {
   display: inline;
-  margin: 10px;
 }
 
 .sidebar button {
   color: white;
   text-align: center;
   display: block;
-  font-size: 17px;
+  font-size: 14px;
   background:none;
   border:none;
   margin-left: auto;
@@ -53,4 +52,24 @@ ul {
 
 button:hover {
   color: black;
+}
+
+@media only screen and (min-width: 600px) {
+  .sidebar {
+    width: 150px;
+    font-size: 24px;
+  }
+  .sidebar button {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .sidebar {
+    width: 200px;
+    font-size: 28px;
+  }
+  .sidebar button {
+    font-size: 20px;
+  }
 }

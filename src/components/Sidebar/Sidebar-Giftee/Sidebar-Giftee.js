@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { MyContext } from '../../../contexts/context';
 import EventApiService from '../../../services/event-api-service';
-import { Link } from 'react-router-dom';
 import SidebarEvent from '../Sidebar-Event/Sidebar-Event';
 import EventsApiService from '../../../services/event-api-service';
 
@@ -82,8 +81,11 @@ export default class SidebarGiftee extends Component {
       <li className='giftee-element'>
         <div>
           <h3 className='giftee-name' onClick={() => this.context.toggleExpandedGiftee(giftee.id)}>{giftee.full_name}</h3>
-          <button className='giftee-name' onClick={e => handleDeleteButtonClicked(e, giftee.id)}>Delete Giftee</button>
+          <button className='giftee-name' onClick={e => handleDeleteButtonClicked(e, giftee.id)}>
+            Delete Giftee
+          </button>
         </div>
+        {/* eslint-disable-next-line */}
         <ul className='sidebar-events' className={this.hideEvents(giftee.id)}>
           {this.renderSidebarEvents()}        
           <li>

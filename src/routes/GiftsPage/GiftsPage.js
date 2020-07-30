@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { MyContext } from '../../contexts/context';
 import GiftForm from '../../components/Forms/GiftForm/GiftForm';
 import GiftCard from '../../components/GiftCard/GiftCard';
-import GiftApiService from '../../services/gift-api-service'; 
 
 export default class GiftsPage extends Component {
   static contextType = MyContext;

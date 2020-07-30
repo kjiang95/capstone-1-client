@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import { MyContext } from '../../../contexts/context';
-import { Link } from 'react-router-dom';
-import GiftApiService from '../../../services/gift-api-service';
 
 export default class SidebarEvent extends Component {
   static contextType = MyContext;

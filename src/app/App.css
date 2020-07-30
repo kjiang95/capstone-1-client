@@ -18,10 +18,9 @@ body {
 
 .page {
   height: 100vh;
-  width: 60vw;
   background-color: #FAF5F2;
   text-align: center;
-  margin-left: 40vw;
+  margin-left: 105px;
   padding: 10px;
 }
 
@@ -34,7 +33,7 @@ body {
 }
 
 .logo {
-  width: 25%;
+  width: 140px;
   height: auto;
 }
 
@@ -44,26 +43,6 @@ body {
   margin-top: 30px;
   width: 50%;
   text-align: left;
-}
-
-.giftsPage {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.loginPage {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.registrationPage {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.gifteePage {
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .eventPage {
@@ -76,8 +55,17 @@ body {
   width: 100%;
 }
 
-/* @media only screen and (min-width: 800px) {
+@media only screen and (min-width: 600px) {
   .page {
-    margin-left: 20%;
+    margin-left: 150px;
   }
-} */
+}
+
+@media only screen and (min-width: 700px) {
+  .page {
+    margin-left: 0px;
+  }
+  .App-main {
+    margin: auto;
+  }
+}
