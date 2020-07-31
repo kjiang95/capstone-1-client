@@ -67,5 +67,6 @@ body {
   }
   .App-main {
     margin: auto;
+    width: 50vw;
   }
 }

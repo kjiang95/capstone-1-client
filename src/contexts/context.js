@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GiftApiService from '../services/gift-api-service';
 import GifteeApiService from '../services/giftee-api-service';
 import EventsApiService from '../services/event-api-service';
+import TokenService from '../services/token-service';
 
 
 export const MyContext = React.createContext({
@@ -61,6 +62,9 @@ export default class MyProvider extends Component {
   };
 
   getGiftees = () => {
+    if (!TokenService.getAuthToken()) {
+      return
+    }
     GifteeApiService.getGifteesByUserId()
       .then(giftees => {
         this.setState({
