@@ -79,15 +79,15 @@ export default class MyProvider extends Component {
       expandedGiftee: id
     })
   }
-  
-  getEvents = () => {
-    EventApiService.getEventByGifteeId(gifteeId)
-    .then(events => {
-      this.setState({
-        events: events
-      });
-    });  
-  }
+
+  // getEvents = () => {
+  //   EventApiService.getEventByGifteeId(gifteeId)
+  //   .then(events => {
+  //     this.setState({
+  //       events: events
+  //     });
+  //   });  
+  // }
 
   handleGiftFormSubmit = (e, newGift) => {
     e.preventDefault()
