@@ -22,7 +22,8 @@ export const MyContext = React.createContext({
   handleNewEventSubmit: () => {},
   setEventId: () => {},
   handleGiftDelete: () => {},
-  toggleExpandedGiftee: () => {}
+  toggleExpandedGiftee: () => {},
+  getEvents: () => {}
 });
 
 export default class MyProvider extends Component {
@@ -43,7 +44,8 @@ export default class MyProvider extends Component {
     handleNewEventSubmit: () => {},
     setEventId: () => {},
     handleGiftDelete: () => {},
-    toggleExpandedGiftee: () => {}
+    toggleExpandedGiftee: () => {},
+    getEvents: () => {}
   };
 
   setEventId = (eventId) => {
@@ -80,14 +82,15 @@ export default class MyProvider extends Component {
     })
   }
 
-  // getEvents = () => {
-  //   EventApiService.getEventByGifteeId(gifteeId)
-  //   .then(events => {
-  //     this.setState({
-  //       events: events
-  //     });
-  //   });  
-  // }
+  getEvents = (gifteeId) => {
+    this.setState({ gifteeId: gifteeId})
+    EventsApiService.getEventByGifteeId(gifteeId)
+    .then(events => {
+      this.setState({
+        events: events
+      });
+    });  
+  }
 
   handleGiftFormSubmit = (e, newGift) => {
     e.preventDefault()
@@ -144,7 +147,8 @@ export default class MyProvider extends Component {
         handleNewEventSubmit: this.handleNewEventSubmit,
         setEventId: this.setEventId,
         handleGiftDelete: this.handleGiftDelete,
-        toggleExpandedGiftee: this.toggleExpandedGiftee
+        toggleExpandedGiftee: this.toggleExpandedGiftee,
+        getEvents: this.getEvents
       }}>
         {this.props.children}
       </MyContext.Provider>

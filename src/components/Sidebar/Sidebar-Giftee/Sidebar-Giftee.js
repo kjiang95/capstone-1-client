@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { MyContext } from '../../../contexts/context';
-import EventApiService from '../../../services/event-api-service';
 import SidebarEvent from '../Sidebar-Event/Sidebar-Event';
 import EventsApiService from '../../../services/event-api-service';
 
@@ -9,9 +8,6 @@ export default class SidebarGiftee extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      events: [],
-    };
   };
 
 
@@ -22,22 +18,12 @@ export default class SidebarGiftee extends Component {
   getEvents() {
     const { giftee } = this.props;
     const gifteeId = giftee.id;
-    EventApiService.getEventByGifteeId(gifteeId)
-      .then(events => {
-        this.setState({
-          events: events
-        });
-      });
+    this.context.getEvents(gifteeId)
   }
 
   renderWhenPosted(gifteeId) {
     if (this.context.posted === 1) {
-      EventsApiService.getEventByGifteeId(gifteeId)
-        .then(events => {
-          this.setState({
-            events: events
-          })
-        })
+        this.context.getEvents(gifteeId)
         .then(() => {
           this.context.setPostedToZero()
         })
@@ -54,7 +40,7 @@ export default class SidebarGiftee extends Component {
   }
 
   renderSidebarEvents() {
-    const events = this.state.events
+    const events = this.context.events
     return events.map(event => 
       <SidebarEvent
         key={event.id}
@@ -66,7 +52,7 @@ export default class SidebarGiftee extends Component {
   }
 
   handleDeleteEventButton = (id) => {
-    EventApiService.deleteEventById(id)
+    EventsApiService.deleteEventById(id)
       .then(() => {
         this.getEvents()
       })
