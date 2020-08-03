@@ -34,6 +34,7 @@ export default class MyProvider extends Component {
 
     gifts: [],
     giftees: [],
+    events: [],
 
     getGifts: () => {},
     getGiftees: () => {},
@@ -77,6 +78,15 @@ export default class MyProvider extends Component {
     this.setState({
       expandedGiftee: id
     })
+  }
+  
+  getEvents = () => {
+    EventApiService.getEventByGifteeId(gifteeId)
+    .then(events => {
+      this.setState({
+        events: events
+      });
+    });  
   }
 
   handleGiftFormSubmit = (e, newGift) => {
@@ -125,6 +135,7 @@ export default class MyProvider extends Component {
 
         gifts: this.state.gifts,
         giftees: this.state.giftees,
+        events: this.state.events,
 
         getGifts: this.getGifts,
         getGiftees: this.getGiftees,

@@ -5,8 +5,8 @@ export default class SidebarEvent extends Component {
   static contextType = MyContext;
 
   formatDate(utcDate) {
-    const date = new Date(utcDate);
-    return date.toLocaleDateString();
+    const date = new Date(utcDate).toLocaleDateString('en-US', {timeZone: 'UTC'});
+    return date;
   }
 
   render() {

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import '../forms.css';
-import Calendar from 'react-calendar';
 import { MyContext } from '../../../contexts/context';
-import 'react-calendar/dist/Calendar.css';
 
 export default class NewEventForm extends Component {
   static contextType = MyContext;
@@ -21,7 +19,9 @@ export default class NewEventForm extends Component {
     this.setState({eventType: e.target.value})
   }
 
-  handleDateChange = date => this.setState({ date })
+  handleDateChange = (date) => {
+    this.setState({ date: new Date(date) })
+  }
 
   handleBudgetChange = (e) => {
     e.preventDefault()
@@ -34,7 +34,7 @@ export default class NewEventForm extends Component {
         this.context.setEventId(returnedEvent.id)
         this.props.history.push(`events/${returnedEvent.id}/gifts`)
       })
-      .catch(err => {console.log(err)})
+      .catch(err)
   }
 
   render () {
@@ -55,9 +55,9 @@ export default class NewEventForm extends Component {
         </label>
         <label htmlFor='setDate'>
           Set Date:
-          <Calendar
-            onChange={this.handleDateChange}
-            value={this.state.date}
+          <input
+            type='date'
+            onChange={(e) => this.handleDateChange(e.target.value)}
           />
         </label>
         <label htmlFor='SetBudget'>
