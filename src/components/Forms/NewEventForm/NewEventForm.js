@@ -34,7 +34,7 @@ export default class NewEventForm extends Component {
         this.context.setEventId(returnedEvent.id)
         this.props.history.push(`events/${returnedEvent.id}/gifts`)
       })
-      .catch(err)
+      .catch(err => console.log(err))
   }
 
   render () {
